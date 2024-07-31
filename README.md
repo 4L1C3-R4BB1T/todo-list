@@ -14,5 +14,5 @@ Implementação de uma TODO List usando Java e Angular. Cada usuário pode criar
 ## 🔧 Tecnologias
 🔸 Java  
 🔸 Spring  
-🔸 Angular
+🔸 Angular  
 🔸 PostgreSQL   
