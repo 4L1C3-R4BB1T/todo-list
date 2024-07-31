@@ -1,0 +1,45 @@
+<div class="task-list">
+    <div class="task-list-scroll">
+        <div class="task-list-list">
+            <div class="task-list-item" *ngFor="let task of data"
+                [ngClass]="{fadeIn: !task.feito && !task.vencimento, done: task.feito, expired: task.expirou }">
+                <div class="task-list-item-header">
+                    <input type="checkbox" name="active" #inputCheckbox
+                        (input)="changeTaskStatus(task, inputCheckbox.checked)" [checked]="task.feito && !task.expirou"
+                        [disabled]="task.expirou" />
+                    <h1>{{ task.titulo }}</h1>
+                </div>
+                <div class="task-list-item-actions">
+                    <ng-template [ngIf]="!task.feito && !task.expirou">
+                        <img src="../../../../assets/icons/task-list/edit.svg" alt="" (click)="editTask(task)" />
+                        <img src="../../../../assets/icons/task-list/remove.svg" alt="" (click)="deleteTask(task)" />
+                    </ng-template>
+                    <ng-template [ngIf]="task.feito || task.expirou">
+                        <img class="swing" src="../../../../assets/icons/task-list/remove-light.svg" alt=""
+                            (click)="deleteTask(task)" />
+                    </ng-template>
+                </div>
+
+                <div *ngIf="task.feito || task.expirou " class="task-list-description">
+                    <span>Conteúdo</span>
+                    <p class="list-description">
+                        {{ task.descricao }}
+                    </p>
+                </div>
+
+                <div class="task-list-item-descriptions">
+                    <p>Criação {{ task.dataCriacao | date: "dd/MM/yyyy" }}</p>
+                    <p>Previsão {{ task.dataPrevisao | date: "dd/MM/yyyy" }}</p>
+
+                    <ng-template [ngIf]="task.feito && task.conclusao">
+                        <p>Feito em {{ task.conclusao | date: "dd/MM/yyyy" }}</p>
+                    </ng-template>
+
+                    <ng-template [ngIf]="task.vencimento && task.vencimento">
+                        <p>Vencido em {{ task.vencimento | date: "dd/MM/yyyy" }}</p>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

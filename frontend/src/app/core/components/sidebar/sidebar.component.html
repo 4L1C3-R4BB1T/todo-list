@@ -1,0 +1,29 @@
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h1>TO-DO-LIST</h1>
+        <div class="sidebar-header-actions">
+            <img src="../../../../assets/icons/sidebar/add-list.svg" alt="" (click)="add()">
+            <img src="../../../../assets/icons/sidebar/logout.svg" alt="" (click)="logout()" />
+        </div>
+    </div>
+    <div class="sidebar-search">
+        <img src="../../../../assets/icons/sidebar/lupa.svg" alt="">
+        <input type="text" name="search" placeholder="Pesquisar..." #inputSearch
+            (input)="searchList(inputSearch.value)">
+    </div>
+    <div class="sidebar-scroll">
+        <div class="siderbar-list">
+            <div class="siderbar-list-item" *ngFor="let list of copy" (click)="handleListSelected(list)"
+                [ngClass]="{selected: listSelected && listSelected.codigo === list.codigo}"
+                (click)="listSelected && listSelected.codigo === list.codigo ? removeList() : null">
+
+                <img *ngIf="!(listSelected && listSelected.codigo === list.codigo) else changeImgToDarkLight"
+                    src="../../../../assets/icons/sidebar/list.svg" alt="">
+                <ng-template #changeImgToDarkLight>
+                    <img src="../../../../assets/icons/sidebar/list-bg-dark.svg" alt="">
+                </ng-template>
+                <p>{{ list.titulo | limitString }}</p>
+            </div>
+        </div>
+    </div>
+</div>

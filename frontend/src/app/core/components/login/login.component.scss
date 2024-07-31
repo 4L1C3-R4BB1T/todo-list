@@ -1,0 +1,92 @@
+.color-white {
+    color: #fff;
+}
+
+.login {
+    background-color: #454d6b;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @extend .color-white;
+    padding: 1rem;
+
+    .login-form {
+        max-width: 420px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 2rem;
+        padding-bottom: 2rem;
+        box-shadow: 0 2px 5px #00000027;
+        background: #353b50;
+        gap: 1rem;
+
+        #usuario,
+        #senha {
+            color: #999ca7;
+        }
+
+        h1 {
+            color: #d6d7c5;
+            margin-bottom: 1.5rem;
+        }
+
+        h1::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 1.5px;
+            background-color: #fff;
+        }
+
+        img {
+            width: 150px;
+            margin: auto;
+        }
+
+        input,
+        button {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            border: none;
+            outline: none;
+            background: #fff;
+            @extend .color-white;
+        }
+
+        input {
+            border-bottom: 1px solid #fff;
+            padding: 0.5rem 1rem;
+            padding-bottom: 1rem;
+            background: #353b50;
+        }
+
+        button {
+            margin-top: 1rem;
+            background-color: #a13854;
+            cursor: pointer;
+            box-shadow: 0 5px 5px #0000001b;
+
+            &:hover {
+                transform: scale(1.02);
+            }
+        }
+
+        .login-cadastro {
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+
+            a {
+                text-decoration: none;
+                color: #999ca7;
+            }
+
+            a:hover {
+                color: #fff;
+            }
+        }
+    }
+}

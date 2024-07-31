@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+
+  database:
+    container_name: database_todolist
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: todolist
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    container_name: pgadmin_auth
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "15000:80"

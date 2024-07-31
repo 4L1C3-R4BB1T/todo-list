@@ -1,0 +1,20 @@
+<div class="modal-task">
+    <div class="modal-task-bg-dark">
+        <form class="modal fadeIn" [formGroup]="formGroup" (ngSubmit)="modeEditTask ? edit() : save()">
+            <div class="modal-actions">
+                <h1>Tarefa</h1>
+                <img src="../../../../assets/icons/modal-task/close.svg" alt="" (click)="close()">
+            </div>
+            <input type="text" name="titulo" placeholder="Título" formControlName="titulo" autocomplete="off">
+            <textarea name="descricao" placeholder="Descrição" formControlName="descricao"></textarea>
+            <div class="modal-date-input">
+                <input type="date" name="dataPrevisao" placeholder="Previsão de conclusão"
+                    formControlName="dataPrevisao">
+            </div>
+            <button type="submit">
+                <img src="../../../../assets/icons/modal-task/save.svg" alt="">
+                Salvar
+            </button>
+        </form>
+    </div>
+</div>

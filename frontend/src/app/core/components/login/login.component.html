@@ -1,0 +1,17 @@
+<div class="login">
+    <form class="login-form fadeIn" #loginForm="ngForm">
+        <h1>Login</h1>
+        <div>
+            <label for="usuario">Usuário</label>
+            <input type="text" name="apelido" ngModel id="usuario" autocomplete="off">
+        </div>
+        <div>
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" ngModel id="senha" autocomplete="off">
+        </div>
+        <button type="submit" (click)="toEnter(loginForm.value)">Logar</button>
+        <div class="login-cadastro">
+            <a [routerLink]="['registrar']">Não tem conta? Clique aqui</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,69 @@
+<div class="container fadeInLeft">
+    <section class="sidebar">
+        <sidebar
+            [listSelected]="listSelected"
+            [data]="lists"
+            (addListEvent)="openModalAddList()"
+            (logoutEvent)="logout()"
+            (listSelectEvent)="getListSelected($event)"
+            (updateListsEvent)="updateOnDelete()"
+            >
+        </sidebar>
+    </section>
+    <main>
+        <div class="header">
+            <customHeader
+                [listSelected]="listSelected"
+                (editListEvent)="editList()"
+                (markOffEvent)="markOffList()"
+                (addTaskEvent)="openModalAddTask()"
+            ></customHeader>
+        </div>
+
+        <div class="tasks">
+            <section *ngIf="listSelected" class="tasks-infor">
+                <p>A fazer: <span class="aFazer">{{ sub(listSelected.naoFeitas, listSelected.vencidas)}}</span></p>
+                <p>Feitas: <span class="feitas">{{ listSelected.feitas }}</span></p>
+                <p>Vencidas: <span class="vencidas">{{ listSelected.vencidas }}</span></p>
+                <p>Total: {{ totalInforTasks(listSelected.naoFeitas, listSelected.feitas ) }}</p>
+            </section>
+
+            <task-list
+                *ngIf="tasks.length"
+                [data]="tasks"
+                [listSelected]="listSelected"
+                (editTaskEvent)="editTask($event)"
+                (updateAreaTasks)="updateOnAreaTasks()"
+            >
+            </task-list>
+
+            <error *ngIf="lists.length == 0"></error>
+
+            <error
+                *ngIf="listSelected && !tasks.length"
+                    message="Não há tarefas criadas">
+            </error>
+
+            <error
+                *ngIf="!listSelected"
+                    message="Selecione uma lista para visualização!">
+            </error>
+        </div>
+    </main>
+</div>
+<modal-task
+    (closeModalEvent)="closeModalAddOrEditTask()"
+    *ngIf="openModalTask"
+    [listSelected]="listSelected"
+    (updateAreaTasks)="updateOnAreaTasks()"
+    [modeEditTask]="modeEditTask"
+    [taskSelected]="taskSelected"
+>
+</modal-task>
+<modal-list
+    [listSelected]="listSelected"
+    [editMode]="modeEditList"
+    [userId]="userId"
+    *ngIf="openModalList"
+    (closeModalEvent)="closeModalAddOrEditList()">
+</modal-list>

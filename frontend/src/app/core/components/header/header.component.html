@@ -1,0 +1,9 @@
+<header class="header">
+    <h1 *ngIf="listSelected">{{ listSelected.titulo | limitString }}</h1>
+    <h1 *ngIf="!listSelected"></h1>
+    <section class="header-actions">
+        <img src="../../../../assets/icons/header/edit.svg" alt="" (click)="listSelected ? edit() : null">
+        <img src="../../../../assets/icons/header/add.svg" alt="" (click)="add()">
+        <img src="../../../../assets/icons/header/exit.svg" alt="" (click)="markOff()">
+    </section>
+</header>
